@@ -1,3 +1,27 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from 'astro:content';
 
+const events = await getCollection('events');
 ---
+
+
+<BaseLayout title="Events" pageTitle="Events">
+    <div class="space-y-8">
+        <!-- Seiten-Header -->
+        <header class="text-center pb-8 border-b border-gray-200">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">
+                📅 Events & Meetups
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Entdecke alle Events der PHP USERGROUP DRESDEN e.V. - von kommenden Meetups 
+                bis hin zu vergangenen Veranstaltungen mit spannenden Talks und Workshops.
+            </p>
+        </header>
+
+        <div class="space-y-12">
+            
+        </div>
+
+        
+</BaseLayout>

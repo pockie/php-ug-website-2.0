@@ -1,0 +1,59 @@
+---
+import { render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+    event: CollectionEntry<'events'>;
+}
+
+const { event } = Astro.props;
+const { Content } = await render(event);
+---
+
+<article class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <h2 class="text-2xl font-bold text-gray-900 mb-2">{event.data.title}</h2>
+    <div class="text-sm text-gray-600 mb-4">
+        <div>
+        📅 {event.data.date} | 📍 <a href={event.data.location.mapsUrl} target="_blank">{event.data.location.name}, {event.data.location.address}</a>
+        </div>
+        <div>
+            {event.data.image && (
+                <img 
+                    src={event.data.image} 
+                    alt={`Image for event ${event.data.title}`} 
+                    class="mt-2 rounded-md shadow-sm"
+                />
+            )}
+        </div>
+    </div>
+    
+    {event.data.program && (
+        <div class="mb-4">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">Programm / Program</h3>
+            <ul class="space-y-1 text-sm">
+                {event.data.program.map((item) => (
+                    <div class="">
+                        <div>
+                            <span class="font-mono text-gray-600 mr-3 min-w-[4rem]">{item.time}</span>
+                            <span>{item.title}</span>
+                        </div>
+                        <div>
+                            {item.description}
+                        </div>
+                        {item.speaker && (
+                            <div>
+                                <span>{item.type}</span>
+                                <span>{item.speaker} by</span>
+                                <span>Language: {item.language}</span>
+                            </div>
+                        )}
+                    </div>
+                ))}
+            </ul>
+        </div>
+    )}
+    
+    <div class="prose prose-gray max-w-none">
+        <Content />
+    </div>
+</article>

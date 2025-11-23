@@ -1,0 +1,56 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Event from "../../components/Event.astro";
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const events = await getCollection('events');
+  return events.map((event) => ({
+    params: { slug: event.slug },
+    props: { event },
+  }));
+}
+
+interface Props {
+  event: CollectionEntry<'events'>;
+}
+
+const { event } = Astro.props;
+const { Content } = await event.render();
+---
+
+<BaseLayout title={event.data.title}>
+    <div class="max-w-4xl mx-auto">
+        <!-- Event Component -->
+        <Event 
+            title={event.data.title}
+            date={event.data.date}
+            location={event.data.location}
+            program={event.data.program}
+            image={event.data.image}
+        />
+        
+        <!-- Markdown Content -->
+        <article class="mt-8 prose prose-lg max-w-none">
+            <Content />
+        </article>
+        
+        <!-- Navigation -->
+        <div class="mt-12 pt-8 border-t border-gray-200">
+            <div class="flex justify-between items-center">
+                <a 
+                    href="/" 
+                    class="inline-flex items-center text-blue-600 hover:text-blue-500 font-medium"
+                >
+                    ← Zurück zur Startseite
+                </a>
+                <a 
+                    href="/events" 
+                    class="inline-flex items-center text-blue-600 hover:text-blue-500 font-medium"
+                >
+                    Alle Events anzeigen →
+                </a>
+            </div>
+        </div>
+    </div>
+</BaseLayout>

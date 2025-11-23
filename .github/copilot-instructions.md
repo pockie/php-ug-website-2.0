@@ -61,13 +61,37 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ```
 
 ### External Dependencies
-- No external CSS frameworks - clean minimal setup
+- **Tailwind CSS**: Added for styling (v4.x with Vite integration)
 - Uses favicon.svg with proper SVG type declaration
+- Should match existing website design at https://phpug-dresden.org/
+
+## Target Design (Based on https://phpug-dresden.org/)
+The new website should replicate the existing design structure:
+
+### Layout Structure
+- **Header**: PHP USERGROUP DRESDEN e.V. branding with "Gute Software durch stete Verbesserung" slogan
+- **Main Content**: Event-focused layout with "Nächstes Event" prominently featured
+- **Sidebar**: Navigation and supplementary content
+- **Footer**: Comprehensive links (social media, legal pages, membership, sponsoring)
+
+### Key Sections to Implement
+1. **Nächstes Event** - Featured upcoming event with date, location, program details
+2. **Vergangene Events** - Past events in chronological order
+3. **Das Orga-Team** - Team member photos and roles
+4. **Sponsoren** - Sponsor company logos
+5. **Downloads** - Logo and promotional materials
+
+### Design Patterns
+- Event cards with images, dates, locations, and detailed programs
+- Time-structured event schedules (Lightning Talks, Main Talks)
+- Clean typography with German localization
+- Logo-grid layouts for sponsors/partners
 
 ## Development Areas to Address
-1. **Empty Components**: Header, Footer, and events page need implementation
+1. **Empty Components**: Header, Footer, and events page need implementation following existing design
 2. **Unused Props**: BaseLayout accepts `pageTitle` prop but uses hardcoded title
-3. **Styling**: Global CSS file exists but is empty
+3. **Styling**: Global CSS with Tailwind needs implementation of existing design
+4. **Content Structure**: Event data, team info, sponsor listings need to be structured
 
 ## German Localization
 - Set `lang="de-DE"` for German language

@@ -3,7 +3,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 import Sidebar from "../components/Sidebar.astro";
-const {pageTitle} = Astro.props;
+const {pageTitle = "Home"} = Astro.props;
 ---
 <html lang="de-DE">
 <head>
@@ -11,21 +11,49 @@ const {pageTitle} = Astro.props;
     <link rel="icon" type="image/svg" href="/favicon.svg"/>
     <meta name="viewport" content="width=device-width"/>
     <meta name="generator" content={Astro.generator}/>
-    <title>Home | PHP USERGROUP DRESDEN e.V.</title>
+    <title>{pageTitle} | PHP USERGROUP DRESDEN e.V.</title>
 </head>
-<body>
-<Header/>
-<div class="page-container">
-    <div class="content">
-        <div class="sidebar">
-            <Sidebar />
+<body class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <Header/>
+    
+    <!-- Main Layout Container -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row gap-8 py-8">
+            <!-- Sidebar Navigation -->
+            <aside class="w-full lg:w-64 flex-shrink-0">
+                <div class="sticky top-8">
+                    <Sidebar />
+                </div>
+            </aside>
+            
+            <!-- Main Content Area -->
+            <main class="flex-1 min-w-0">
+                <!-- Page Header -->
+                <div class="mb-8">
+                    <h1 class="text-3xl font-bold text-gray-600 mb-2">
+                        PHP USERGROUP DRESDEN e.V. <span class="text-sm font-normal">[VR 9725]</span>
+                    </h1>
+                    <p class="text-lg font-bold text-gray-600">
+                        Gute Software durch stete Verbesserung
+                    </p>
+                    <p>
+                       Der PHP USERGROUP DRESDEN e.V. ist eine Interessensgemeinschaft von PHP-Enthusiasten. Unser Ziel ist es, Wissen rund 
+                       um PHP und Softwareentwicklung im Allgemeinen aufzubauen und zu teilen. Egal ob erfahrene Entwickler/innen, 
+                       Studenten/innen oder Freiberufler/innen, jeder ist willkommen und kann sich einbringen. Wir veranstalten 
+                       regelmäßig Meetups, organisieren uns für Ausflüge zu Workshops und besuchen gemeinsam Konferenzen. 
+                    </p>
+                </div>
+                
+                <!-- Page Content -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                    <slot/>
+                </div>
+            </main>
         </div>
-        <main>
-            <h1>PHP USERGROUP DRESDEN e.V. [VR 9725]</h1>
-            <slot/>
-        </main>
     </div>
-</div>
-<Footer/>
+    
+    <!-- Footer -->
+    <Footer/>
 </body>
 </html>
