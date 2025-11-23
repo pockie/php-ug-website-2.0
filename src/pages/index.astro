@@ -4,7 +4,7 @@ import EventCard from "../components/EventCard.astro";
 import { getSortedEvents } from "../utils/events";
 import type { EventData } from "../types/event";
 
-const events = await getSortedEvents();
+const events = (await getSortedEvents()).slice(0, 3);
 ---
 <BaseLayout title="Home">
     <div class="space-y-8">

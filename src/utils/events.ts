@@ -2,27 +2,51 @@ import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
 /**
- * Lädt alle Events und sortiert sie chronologisch (neueste zuerst)
- * @returns Promise<CollectionEntry<'events'>[]> - Sortierte Events
+ * Loads all events and sorts them chronologically (newest first)
+ * @returns Promise<CollectionEntry<'events'>[]> - Sorted events
  */
 export async function getSortedEvents(): Promise<CollectionEntry<'events'>[]> {
     const allEvents = await getCollection('events');
     
-    return allEvents.sort((a, b) => {
+    return allEvents.sort((a: any, b: any) => {
         const dateA = new Date(a.data.date || '1970-01-01');
         const dateB = new Date(b.data.date || '1970-01-01');
-        return dateB.getTime() - dateA.getTime(); // Neueste Events zuerst
+        return dateB.getTime() - dateA.getTime(); // Newest events first
     });
 }
 
 /**
- * Lädt Events und filtert sie nach einem bestimmten Kriterium
- * @param filterFn - Filterfunktion
- * @returns Promise<CollectionEntry<'events'>[]> - Gefilterte und sortierte Events
+ * Loads events and filters them based on a specific criterion
+ * @param filterFn - Filter function
+ * @returns Promise<CollectionEntry<'events'>[]> - Filtered and sorted events
  */
 export async function getFilteredEvents(
     filterFn: (event: CollectionEntry<'events'>) => boolean
 ): Promise<CollectionEntry<'events'>[]> {
     const sortedEvents = await getSortedEvents();
     return sortedEvents.filter(filterFn);
+}
+
+/**
+ * Load only upcoming events (from today onwards)
+ * @returns Promise<CollectionEntry<'events'>[]> - Upcoming events
+ */
+export async function getUpcomingEvents(): Promise<CollectionEntry<'events'>[]> {
+    const now = new Date();
+    return getFilteredEvents(event => {
+        const eventDate = new Date(event.data.date || '1970-01-01');
+        return eventDate >= now;
+    });
+}
+
+/**
+ * Load only past events (before today)
+ * @returns Promise<CollectionEntry<'events'>[]> - Past events
+ */
+export async function getPastEvents(): Promise<CollectionEntry<'events'>[]> {
+    const now = new Date();
+    return getFilteredEvents(event => {
+        const eventDate = new Date(event.data.date || '1970-01-01');
+        return eventDate < now;
+    });
 }
