@@ -18,3 +18,8 @@ export interface EventData {
     program: ProgramItem[];
     image?: string;
 }
+
+export interface DownloadLinkData {
+    label: string;
+    href: string;
+}

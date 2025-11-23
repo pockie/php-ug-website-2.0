@@ -1,0 +1,71 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import DownloadLink from "../components/DownloadLink.astro";
+
+const pageTitle = "Downloads / Formulare";
+
+const clubDownloads = [
+    {
+        label: "Vereinssatzung",
+        href: "/downloads/Vereinssatzung.pdf",
+    },
+    {
+        label: "Datenschutzerklärung",
+        href: "/downloads/Datenschutzerklaerung.pdf",
+    },
+    {
+        label: "Impressum",
+        href: "/downloads/Impressum.pdf",
+    }
+];
+
+const memberDownloads = [
+    {
+        label: "Mitgliedsantrag",
+        href: "/downloads/Mitgliedsantrag.pdf",
+    },
+    {
+        label: "Stammdaten Änderungsantrag",
+        href: "/downloads/Stammdatenaenderung.pdf",
+    }
+];
+
+const mediaDownloads = [
+    {
+        label: "Vereinslogo (EPS)",
+        href: "/downloads/PHPUGDD-Logo.eps",
+    },
+    {
+        label: "Gründerfoto ( Gründerfoto (JPEG, 4863x3242 Pixel)",
+        href: "/downloads/PHPUGDD-Gruenderfoto.jpg",
+    },
+    {
+        label: "Image-Bild (JPEG, 4925x3283 Pixel))",
+        href: "/downloads/PHPUGDD-Imagebild.jpg",
+    }
+];
+---
+<BaseLayout pageTitle={pageTitle}>
+    <main class="prose mx-auto py-8 px-4">
+        <h2 class="text-3xl font-bold text-gray-600 mb-2">Downloads & Formulare</h2>
+        <p>Hier findet ihr alle wichtigen Dokumente für euch als Mitglieder und rund um unser Vereinswesen.</p>
+        <h3 class="text-2xl font-bold text-gray-600 mb-2">Zum Verein</h3>
+        <ul>
+            {clubDownloads.map(item => (
+                    <DownloadLink downloadLinkData={item} />
+            ))}
+        </ul>
+        <h3 class="text-2xl font-bold text-gray-600 mb-2">Für (werdende) Mitglieder</h3>
+        <ul>
+            {memberDownloads.map(item => (
+                    <DownloadLink downloadLinkData={item} />
+            ))}
+        </ul>
+        <h3 class="text-2xl font-bold text-gray-600 mb-2">Media</h3>
+        <ul>
+            {mediaDownloads.map(item => (
+                    <DownloadLink downloadLinkData={item} />
+            ))}
+        </ul>
+    </main>
+</BaseLayout>
