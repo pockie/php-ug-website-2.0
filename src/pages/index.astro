@@ -7,6 +7,17 @@ import type { EventData } from "../types/event";
 const events = (await getSortedEvents()).slice(0, 3);
 ---
 <BaseLayout title="Home">
+    <div>
+        <p class="text-lg font-bold text-gray-600">
+            Gute Software durch stete Verbesserung
+        </p>
+        <p>
+            Der PHP USERGROUP DRESDEN e.V. ist eine Interessensgemeinschaft von PHP-Enthusiasten. Unser Ziel ist es, Wissen rund
+            um PHP und Softwareentwicklung im Allgemeinen aufzubauen und zu teilen. Egal ob erfahrene Entwickler/innen,
+            Studenten/innen oder Freiberufler/innen, jeder ist willkommen und kann sich einbringen. Wir veranstalten
+            regelmäßig Meetups, organisieren uns für Ausflüge zu Workshops und besuchen gemeinsam Konferenzen.
+        </p>
+    </div>
     <div class="space-y-8">
         {events.map((event: EventData) => (
             <EventCard event={event} />
