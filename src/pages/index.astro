@@ -2,12 +2,13 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import EventCard from "../components/EventCard.astro";
 import { getCollection } from 'astro:content';
+import type { EventData } from "../types/event";
 
 const events = await getCollection('events');
 ---
 <BaseLayout title="Home">
     <div class="space-y-8">
-        {events.map((event) => (
+        {events.map((event: EventData) => (
             <EventCard event={event} />
         ))}
     </div>
