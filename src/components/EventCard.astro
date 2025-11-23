@@ -27,7 +27,9 @@ const { Content } = await render(event);
             )}
         </div>
     </div>
-    
+    <div class="prose prose-gray max-w-none">
+        <Content />
+    </div>
     {event.data.program && (
         <div class="mb-4">
             <h3 class="text-lg font-semibold text-gray-800 mb-2">Programm / Program</h3>
@@ -44,7 +46,7 @@ const { Content } = await render(event);
                         {item.speaker && (
                             <div>
                                 <span>{item.type}</span>
-                                <span>{item.speaker} by</span>
+                                <span>by {item.speaker}</span>
                                 <span>Language: {item.language}</span>
                             </div>
                         )}
@@ -53,8 +55,4 @@ const { Content } = await render(event);
             </ul>
         </div>
     )}
-    
-    <div class="prose prose-gray max-w-none">
-        <Content />
-    </div>
 </article>
