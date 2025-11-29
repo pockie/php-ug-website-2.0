@@ -3,6 +3,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import EventCard from "../components/EventCard.astro";
 import { getSortedEvents } from "../utils/events";
 import type { EventData } from "../types/event";
+import OrgaTeam from "../components/OrgaTeam.astro";
+import Sponsors from "../components/Sponsors.astro";
+import Downloads from "../components/Downloads.astro";
+import Collaborations from "../components/Collaborations.astro";
 
 const events = (await getSortedEvents()).slice(0, 3);
 ---
@@ -22,5 +26,19 @@ const events = (await getSortedEvents()).slice(0, 3);
         {events.map((event: EventData) => (
             <EventCard event={event} />
         ))}
+
+        <div><a href="/events">Übersicht aller geplanten und vergangenen Events</a></div>
+    </div>
+    <div class="space-y-8">
+        <Downloads />
+    </div>
+    <div class="space-y-8">
+        <OrgaTeam />
+    </div>
+    <div class="space-y-8">
+        <Sponsors />
+    </div>
+    <div class="space-y-8">
+        <Collaborations />
     </div>
 </BaseLayout>

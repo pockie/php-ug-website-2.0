@@ -7,6 +7,18 @@ export interface ProgramItem {
     type?: 'intro' | 'lightning' | 'main' | 'social' | 'doors';
 }
 
+export interface OrgaMember {
+    name: string;
+    role: string;
+    image: string;
+}
+
+export interface Sponsor {
+    name: string;
+    logo: string;
+    link: string;
+}
+
 export interface EventData {
     title: string;
     date?: string;

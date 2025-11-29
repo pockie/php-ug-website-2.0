@@ -1,0 +1,19 @@
+---
+import {getCollection} from "astro:content";
+import type {Sponsor} from "../types/event.ts";
+import CollaborationCard from "./CollaborationCard.astro";
+
+const collaborations = await getCollection('collaborations');
+
+console.log(collaborations);
+
+---
+
+<article class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <h2 class="text-2xl font-bold text-gray-900 mb-2">Kooperationen</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 place-items-center">
+    {collaborations.map((collaboration: Sponsor) => (
+            <CollaborationCard sponsor={collaboration} />
+        ))}
+    </div>
+</article>

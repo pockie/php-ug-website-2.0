@@ -1,0 +1,17 @@
+---
+import {getCollection} from "astro:content";
+import type {OrgaMember} from "../types/event.ts";
+import OrgaMemberCard from "./OrgaMemberCard.astro";
+
+const orga = await getCollection('orga');
+---
+
+<article class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <h2 class="text-2xl font-bold text-gray-900 mb-2">Das Orga-Team</h2>
+    <div class="grid grid-cols-4 gap-4">
+    {orga.map((member: OrgaMember) => (
+            <OrgaMemberCard member={member} />
+
+    ))}
+    </div>
+</article>

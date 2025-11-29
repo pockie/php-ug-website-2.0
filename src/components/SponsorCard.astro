@@ -1,0 +1,6 @@
+---
+const { sponsor } = Astro.props;
+---
+<div>
+    <a href={sponsor.data.link} target="_blank"><img class="w-[150px] h-[150px]" src={sponsor.data.logo} alt={sponsor.data.name}/></a>
+</div>

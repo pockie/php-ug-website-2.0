@@ -1,5 +1,5 @@
 import { defineCollection, z } from 'astro:content';
-import { glob } from 'astro/loaders';
+import { glob, file } from 'astro/loaders';
 
 const eventsCollection = defineCollection({
     loader: glob({pattern: '**/*.md', base: './src/content/events'}),
@@ -29,6 +29,36 @@ const eventsCollection = defineCollection({
     })
 });
 
+const orgaCollection = defineCollection({
+    loader: glob({pattern: '**/*.md', base: './src/content/orga'}),
+    schema: z.object({
+        name: z.string(),
+        role: z.string(),
+        image: z.string(),
+    })
+});
+
+const sponsorsCollection = defineCollection({
+    loader: glob({pattern: '**/*.md', base: './src/content/sponsors'}),
+    schema: z.object({
+        name: z.string(),
+        logo: z.string(),
+        link: z.string().url(),
+    })
+});
+
+const collaborationsCollection = defineCollection({
+    loader: glob({pattern: '**/*.md', base: './src/content/collaborations'}),
+    schema: z.object({
+        name: z.string(),
+        logo: z.string(),
+        link: z.string().url(),
+    })
+});
+
 export const collections = {
-  events: eventsCollection,
+    events: eventsCollection,
+    orga: orgaCollection,
+    sponsors: sponsorsCollection,
+    collaborations: collaborationsCollection,
 };
