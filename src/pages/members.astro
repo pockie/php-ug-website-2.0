@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const pageTitle = "Mitglied werden";
+---
+<BaseLayout pageTitle={pageTitle}>
+    <main class="prose mx-auto py-8 px-4">
+        <h2 class="text-3xl font-bold text-gray-600 mb-2">Mitglied werden</h2>
+        <p>
+            Wir freuen uns über jeden, der unsere Sache unterstützen möchte. Am besten kannst du das, in dem du Mitglied
+            beim PHP USERGROUP DRESDEN e.V. wirst.</p>
+        <h3 class="text-lg font-bold text-gray-600">Mitgliedsbeitrag</h3>
+        <p>
+            Der Mitgliedsbeitrag beträgt 12,- EUR / Jahr und wird nach deiner Aufnahme als Vereinsmitglied 1x jährlich
+            per Lastschrift eingezogen. Weitere Details findest du im Mitgliedsantrag.
+        </p>
+        <h3 class="text-lg font-bold text-gray-600">Deine Vorteile als Mitglied:</h3>
+        <ul>
+            <li>Möglichkeit auf vergünstigte Preise für Events und Konferenzen</li>
+            <li>Kostenlose Teilnahme an Workshops, die von uns organisiert werden</li>
+            <li>Mindestens 1 Frei-Getränk bei jedem unserer Meetups</li>
+            <li>Zugriff auf unsere Bibliothek (Videos, Bücher, eBooks, Slides)</li>
+        </ul>
+        <h3 class="text-lg font-bold text-gray-600">Mitgliedsantrag</h3>
+        <p>
+            Lade dir einfach hier unseren Mitgliedsantrag herunter, füll ihn aus und sende ihn unterschrieben entweder
+            per Post oder per E-Mail an:
+        </p>
+        <p>Postanschrift:</p>
+        <p>
+            PHP USERGROUP DRESDEN e.V.<br/>
+            c/o Holger Woltersdorf<br/>
+            Käthe-Kollwitz-Ufer 76<br/>
+            01309 Dresden<br/>
+            Germany
+        </p>
+        <p>E-Mailadresse:</p>
+        <p>orga<kbd>at</kbd>phpug-dresden<kbd>dot</kbd>org</p>
+        <div class="border-t border-gray-200 pt-4">
+            <a
+                    href="/downloads/Mitgliedsantrag.pdf"
+                    target="_blank"
+                    class="block w-full bg-blue-600 text-white text-center px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors mb-2"
+            >
+                Mitgliedsantrag herunterladen
+            </a>
+        </div>
+    </main>
+</BaseLayout>
